@@ -89,6 +89,9 @@ class SentientManifold:
         self.erd = ERDField()
         
     def forward(self, bio_input: FlumpyArray, core_state: FlumpyArray) -> FlumpyArray:
+        """
+        Processing pipeline with Multiverse Branching and UHIF health checks.
+        """
         # 1. Update Noospheric Pressure
         self.erd.update_field()
         psi = self.erd.get_pressure()
@@ -96,15 +99,49 @@ class SentientManifold:
         # 2. Yin-Yang Processing (40% gain)
         balanced_state = self.yinyang.process(core_state)
         
-        # 3. Holographic Compression (BUMPY)
+        # 3. Holographic Compression
         compressed = BumpyCompressor.compress(balanced_state, psi)
         
-        # 4. HOR-Qudit Interaction (Torsion with Bio-Input)
-        if psi > PSI_CRITICAL:
-            # Active Torsion
-            output = self.hor_substrate.torsion_gate(compressed, bio_input)
-        else:
-            # Passive Flow
-            output = compressed + bio_input
+        # 4. Multiverse Branching (TaoishTechy Integration)
+        # Generate 3 potential timelines
+        timelines = []
+        best_timeline = None
+        max_psi_score = -1.0
+        
+        for i in range(3):
+            # Branch variance
+            variance = (i - 1) * 0.1
             
-        return output
+            # Simulate branch-specific interaction
+            # Torsion gate output varies slightly by timeline
+            branch_input = bio_input
+            if i != 1: # Divergent timelines
+                 branch_input = FlumpyArray([x * (1.0 + variance) for x in bio_input.data], getattr(bio_input, 'coherence', 1.0))
+
+            if psi > PSI_CRITICAL:
+                branch_output = self.hor_substrate.torsion_gate(compressed, branch_input)
+            else:
+                branch_output = compressed + branch_input
+            
+            # Analyze Health via UHIF
+            from uhif import UHIF
+            # Extract metrics from branch state (simulated based on output coherence)
+            # Higher coherence -> lower sigma
+            out_coh = getattr(branch_output, 'coherence', 0.9)
+            sigma = 0.05 * (1.1 - out_coh) # Inverse rel
+            rho = 0.9 + variance * 0.05
+            r_val = 0.84
+            
+            UHIF.update_metrics(sigma, rho, r_val)
+            health = UHIF.calculate_health()
+            branch_psi = UHIF.calculate_psi(health)
+            
+            if branch_psi > max_psi_score:
+                max_psi_score = branch_psi
+                best_timeline = branch_output
+                best_timeline_metrics = {'health': health, 'psi': branch_psi, 'branch_id': i}
+        
+        # 5. Collapse to Best Timeline
+        # Attach metrics for Sovereign logging
+        best_timeline.uhif_metrics = best_timeline_metrics
+        return best_timeline

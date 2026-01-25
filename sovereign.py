@@ -92,6 +92,18 @@ class SovereignSystem:
             
             # 3. Log
             if i % 10 == 0:
+                # Basic ERD Log
                 self.laser.log("PROC", self.manifold.erd.get_pressure(), 99.9, f"Processing Frame {i}")
+                
+                # TaoishTechy UHIF Integration Log
+                if hasattr(state, 'uhif_metrics'):
+                    m = state.uhif_metrics
+                    metrics_str = f"Hole-Health: {m['health']:.3f} | PSI: {m['psi']:.3f} | Branch: {m['branch_id']}"
+                    self.laser.log("UHIF", m['psi'], 100 * m['health'], metrics_str)
+                    
+                    # Emergency Protocol (V.)
+                    if m['psi'] < 0.3:
+                         print(f">>> [EMERGENCY] PSI COLLAPSE ({m['psi']:.3f} < 0.3). ENGAGING FAIL-SOFT PROTOCOL.")
+                         # In a real system, would trigger shutdown or reset.
                 
         print(">>> PROTOCOL COMPLETE. SOVEREIGNTY SECURED. <<<")
