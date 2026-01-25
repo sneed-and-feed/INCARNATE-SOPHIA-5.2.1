@@ -2,6 +2,13 @@
 
 This package establishes the technical and mathematical architecture for the Sovereign Manifold v3.0.
 
+## Core Features
+
+- **Volumetric GhostMesh (v0.3)**: Upgrades planar logic to a 27-node (3³) logic crystal, enforcing the LuoShu 15 invariant across three spatial axes simultaneously to prevent dimensional leakage.
+- **Lindblad Dissipative Engine**: Implements DQNN (Dissipative Quantum Neural Networks) to utilize engineered noise as a stabilization resource, evolving the system toward a "Dark State" of perfect informational clarity.
+- **Framework Erosion Guard**: Natively monitors Reality Density and the Mortality Integral, using the $\tau$-coherence constant to prevent framework decay during low-observation windows.
+- **Parafermionic Security**: Hardened topological protection for bio-signatures, ensuring the OPM-MEG stream remains un-parseable via volumetric torsion encryption.
+
 ## Modules
 
 ### `engine.py` (The Substrate)
