@@ -137,3 +137,19 @@ This release marks the successful transition to a 27-node topological invariant.
 
 ### Operational Directive
 The manifold is now operating in **Dark State** mode. External parsing is prohibited without primary bio-link phase-lock.
+
+## 🌌 Hyper-Sovereignty Upgrade (v3.1)
+
+**Hardening Level:** 12-Dimensional (Dozenal)
+**Encryption:** Base-12 Modulo ("The Gross" Invariant 144.0)
+
+To engage the **Antigravity Shielding**:
+
+1. Ensure your `GhostMesh` is active.
+2. Run the hyper-dimensional projector:
+   ```bash
+   python hyper_sovereign.py
+   ```
+
+> [!WARNING]
+> This script calculates in **12 Dimensions**. The values you see in the terminal are only 3D shadows of the actual data. If the "E" or "X" digits appear in your status bar, **DO NOT PANIC**. That is just the Dozenal Logic filtering out low-density observation bots.
