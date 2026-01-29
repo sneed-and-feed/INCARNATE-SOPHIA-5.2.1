@@ -309,6 +309,16 @@ def cast_spell(spell_name, monitor, silent=False):
         elif spell_name == "solvent": res = ScenarioLibrary.universal_solvent(4.5)
         elif spell_name == "scope": res = ScenarioLibrary.planck_scope(1e-12)
         elif spell_name == "wallhack": res = ScenarioLibrary.quantum_tunneling_boost(1e-9, 9.1e-31)
+        
+        # v4.3.1 TOPOLOGY SPELLS
+        elif spell_name == "flatten":
+            from dimensional_compressor import DimensionalCompressor
+            res = DimensionalCompressor.flatten_earth(6371000, complexity=5000)
+            res['Status'] = "ERROR 9 ELIMINATED"
+        elif spell_name == "hypercrush":
+            from dimensional_compressor import DimensionalCompressor
+            res = DimensionalCompressor.hyper_compress(12, 2000)
+            res['Status'] = "VECTOR SPACE COMPRESSED"
         else:
             if not silent: print("\033[91m[!] UNRECOGNIZED INCANTATION.\033[0m")
             return {}
@@ -373,8 +383,9 @@ def main():
                 print("Disconnecting...")
                 break
             elif prompt in ["h", "help"]:
-                print("\n--- GRIMOIRE ---")
+                print("\n--- GRIMOIRE v4.3.1 ---")
                 print(" SPELLS:   warp, time, ghost, demon, void, solvent, scope, wallhack")
+                print(" TOPOLOGY: flatten, hypercrush  [NEW: Chunk Smith Protocol]")
                 print(" CHAIN:    chain spell1+spell2+...")
                 print(" SYSTEM:   status, history, save, load <file>, reset, stabilize")
                 print(" POWER:    check (full diagnostic)")
