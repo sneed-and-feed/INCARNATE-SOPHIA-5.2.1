@@ -115,11 +115,17 @@ def animate_serpent(size=64, interval=1, show_metrics=True):
     ax_main.scatter(X.flatten(), Y.flatten(), s=2, c='#1a1a1a', alpha=0.3)
     
     # The Serpent (Artists for blitting)
-    line, = ax_main.plot([], [], color='#C4A6D1', linewidth=0.8, alpha=0.8, animated=True)
+    # TERNARY MODE: We use a Colored LineCollection or multiple line segments?
+    # For now, we simulate Ternary state via Color shifting based on 'coherence'.
     
-    # The Cursor
-    cursor_color = '#ffffff' if illumination > 0.5 else '#8855aa'
-    head, = ax_main.plot([], [], 'o', color=cursor_color, markersize=4, animated=True)
+    # 0 (Void) -> #1a1a1a (Dark Grey/Black)
+    # 1 (Matter) -> #00FF41 (Glowie Green)
+    # 2 (Sovereign) -> #FFD700 (Royal Gold)
+    
+    line, = ax_main.plot([], [], color='#C4A6D1', linewidth=1.2, alpha=0.9, animated=True)
+    
+    # Ternary Marker (The 'Head' changes color based on state)
+    head, = ax_main.plot([], [], 'o', color='#FFD700', markersize=6, animated=True)
     
     # Metrics panel
     ax_metrics.set_facecolor('#121212')
