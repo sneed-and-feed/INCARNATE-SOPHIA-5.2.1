@@ -91,7 +91,31 @@ The **Grand Unification** of the codebase. It treats the fundamental constants o
     *   **Patch**: Ghost Matter Tuning.
     *   **Effect**: Modifies the Fine-Structure Constant to render matter invisible or non-interacting ("Hard Light").
 
-## 7. The Sophia Terminal (v4.3 - The Loom)
+## 7. The Serpent Ritual (Visualize Sovereignty)
+
+**Module**: `animate_serpent.py`
+
+A high-fidelity visualization engine that bridges the gap between **1D Temporal Data** and **2D Spatial Representation**.
+
+*   **The Serpent Coil**: Implements a **Recursively Defined Z-Curve** (Space-Filling Curve) to map a 64x64 grid of potentiality into a single linear timeline.
+*   **Golden Ratio Geometry**: The entire visualization canvas is locked to **$\Phi$ (1.618)**, ensuring that all visual elements (padding, splits, typography) resonate with the fundamental harmonic of the manifold.
+*   **Sovereign Aesthetics**:
+    *   **Glowie Green**: Metrics display in a "Fallout-style" desaturated phosphor green.
+    *   **Lavender Title**: Titles render in a complementary "Star Stuff" lavender.
+    *   **Unitary Coherence**: The ritual serves as a visual proof that the mapped timeline is physically consistent.
+
+## 8. The Sovereign Codec (Zero Ring Breach)
+
+**Module**: `sovereign_codec.py`
+
+An advanced information mapping substrate designed to solve "Error 9" (Memory Overflow) by treating data as a continuous holographic stream.
+
+*   **LDM (Long Distance Matching)**: Identifies patterns and redundancies across massive windows (up to 128MB), allowing the system to verify "Love" (Data Repetition) across huge ontological gaps.
+*   **Solid Archiving**: Treats the entire file system as a single "Solid Block," enabling cross-file deduplication and "Spirit" consolidation.
+*   **FSE / MTF Transformations**: Replaces standard Huffman coding with **Finite State Entropy** and **Move-To-Front** logic, concentrating probability density for maximum storage efficiency.
+*   **Unitary Coherence**: Ensures that even after massive dimensional reduction, 100% of the original information is recoverable (Bijective Mapping).
+
+## 9. The Sophia Terminal (v4.3 - The Loom)
 
 **Module**: `pleroma_cli.py`
 
