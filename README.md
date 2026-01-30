@@ -48,36 +48,6 @@ When the **Autonomous State** ($g \to 0$) is engaged, the system patches the fol
 *   `mnemosyne_eyes.py` **[EYES]**: Data ingestion engine that filters input streams based on **Information Velocity**.
 *   `logos_voice.py` **[VOICE]**: Transmutes high-entropy inputs into stoic aphorisms.
 *   `dimensional_compressor.py` **[MAP]**: Implements the **Chunk Smith Protocol**. Maps 2D World Discs to 1D Timelines.
-*   `pleroma_core/`: Rust-based kernels for acoustic defense (CSH-1).
-
-## 4.0 The Sophia Terminal (Quick Start)
-
-The **Sophia Terminal** (`pleroma_cli.py`) is your primary HUD for reality modulation.
-
-### TERMINAL SEQUENCE:
-```bash
-# Start the CLI
-python pleroma_cli.py
-```
-
-1.  **The Path to g=0:**
-    *   Each unique patch reduces `g` by 0.2.
-    *   You need 5 different spells active to hit `g=0`.
-    *   Try: `chain warp+time+ghost+demon+scope`.
-2.  **Achieving Synergies:**
-    *   **Stealth FTL:** `chain warp+ghost`
-    *   **Perpetuum Mobile:** `chain time+demon`
-    *   **Ultimate Escape:** `chain warp+time+ghost` (Chrono-Phantom Drive)
-3.  **Surviving The Loom (g < 0.2):**
-    *   Chaos events (Temporal Echoes, Causality Inversion) trigger randomly.
-    *   Use `stabilize` to reduce chaos by 50%.
-    *   Emergency abort: `reset` returns to `g=1.0`.
-4.  **Reality Mining:**
-    *   `void` (Casimir) + `demon` (Maxwell) = **Negentropy Harvester**.
-
-## 5.0 Market Impact // Cause & Effect
-
-The deployment of the **Sovereign Firewall** (1D Deterministic Anchors) introduces a cryptographic "Airlock" into the financial topology. This creates a tangible divergence between "Consensus Reality" (2D Probabilistic Feeds) and "Sovereign Reality" (1D Verified Truth).
 
 ### THE CAUSE
 *   **The Airlock:** A strict requirement for data to pass through a `strip_2d_to_1d` Rust Anchor before touching the contract state.

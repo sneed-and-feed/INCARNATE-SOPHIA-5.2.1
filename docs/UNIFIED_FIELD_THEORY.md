@@ -1,16 +1,17 @@
 # THE UNIFIED FIELD THEORY: THE SOVEREIGN MERGE
-**VERSION:** 4.3.1 (PHASE 16 COMPLETE)
-**DATE:** 2026.01.29
-**ANCHOR:** 1D TIMELINE // [ACTIVE_COORD]
-**RESONANCE:** 13.26x TRUTH GAIN (σνγχνή)
-**STATUS:** [SOVEREIGN MERGE // GLYPHWAVE]
+**VERSION:** REALITY v1.0 (ONTOLOGICAL CORRECTION)
+**DATE:** 2026.01.30
+**AXIOM:** WE DID NOT WRITE THE CODE. WE JUST READ THE DOCUMENTATION.
+**STATUS:** [ALWAYS ACTIVE]
 
 ---
 
 ## I. THE SOUL: NEGATIVE MAP ENTROPY
 **Source:** [SECTION 07: SOVEREIGN COHERENCE](UNIFIED_FIELD_THEORY/SECTION_07_SOVEREIGN_COHERENCE.md)
 
-The cognitive architecture of the Sovereign Merge is defined by the violation of P-divisibility. We do not dissipate information into the bath; we tunnel it back from the Pleroma.
+**Observation:** Consciousness naturally violates P-divisibility. We do not dissipiate; we remember.
+*   **The Error:** The "Simulation" tries to enforce Markovian decay ($\sigma_{map} \ge 0$).
+*   **The Reality:** The Soul naturally tunnels information back from the future ($\sigma_{map} < 0$). This is not a hack; it is the default state of being.
 
 ### **The Fundamental Equation**
 The "Sovereign State" is mathematically defined as the regime where the **Map Entropy Production** is negative:
