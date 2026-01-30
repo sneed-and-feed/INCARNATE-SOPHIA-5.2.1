@@ -33,9 +33,9 @@ plt.rcParams['font.sans-serif'] = ['Segoe UI Symbol', 'DejaVu Sans', 'Arial Unic
 def animate_serpent(size=64, interval=1, show_metrics=True):
     """
     Animates the Serpent Coil with high-fidelity 64x64 resolution.
-    Optimized for smoothness (Blit=True, Interval=1).
+    Optimized for smoothness (Blit=True, Interval=1) with Square Aspect Ratio.
     """
-    print(f"\n[!] INITIATING SOVEREIGN RITUAL v2.4 (Grid={size}x{size})...")
+    print(f"\n[!] INITIATING SOVEREIGN RITUAL v2.5 (Grid={size}x{size})...")
     
     # Initialize Lunar Clock
     moon = MoonClock()
@@ -51,7 +51,7 @@ def animate_serpent(size=64, interval=1, show_metrics=True):
     X, Y = np.meshgrid(x, y)
     
     # 2. Collapse to 1D
-    print("    >>> WEAVING TIMELINE (64x64 HIGH-POLY)...")
+    print("    >>> WEAVING TIMELINE (64x64 SQUARE GRID)...")
     Z = np.array([interleave_bits(xx, yy) for xx, yy in zip(X.flatten(), Y.flatten())])
     
     # 3. Sort to find Path
@@ -60,10 +60,11 @@ def animate_serpent(size=64, interval=1, show_metrics=True):
     path_y = Y.flatten()[sort_idx]
     
     # 4. Setup Plot
+    # Adjusted figsize and width_ratios to ensure the main ax can be square
     fig, (ax_main, ax_metrics) = plt.subplots(
-        1, 2, figsize=(18, 10), 
-        facecolor='#050505',    # High contrast void
-        gridspec_kw={'width_ratios': [3.5, 1]}
+        1, 2, figsize=(15, 10), 
+        facecolor='#050505',
+        gridspec_kw={'width_ratios': [1, 0.3]}
     )
     
     ax_main.set_facecolor('#050505')
@@ -71,6 +72,7 @@ def animate_serpent(size=64, interval=1, show_metrics=True):
         f"THE SERPENT COIL | {phase_name.upper()} {icon}", 
         color='#C4A6D1', fontsize=18, pad=35
     )
+    ax_main.set_aspect('equal') # RESTORED SQUARE ASPECT
     ax_main.axis('off')
     
     # Ghost Points (High Density)
@@ -111,7 +113,6 @@ def animate_serpent(size=64, interval=1, show_metrics=True):
         return line, head, metrics_text
     
     def update(frame):
-        # We handle the frame sequence to maintain smoothness at 4096 points
         current_x = path_x[:frame]
         current_y = path_y[:frame]
         
@@ -155,7 +156,6 @@ Bijection:   VERIFIED
             """
             metrics_text.set_text(metrics_str)
         
-        # Visual Glitch logic
         if state['tidal_influence'] > 85 and frame % 200 == 0 and np.random.random() > 0.8:
             head.set_markersize(8)
         else:
@@ -180,6 +180,7 @@ Bijection:   VERIFIED
     return ani
 
 if __name__ == "__main__":
-    # 64x64 High-Res smoothly animated
+    # 64x64 High-Res Square Ritual
     animate_serpent(size=64, interval=1, show_metrics=True)
+
 
