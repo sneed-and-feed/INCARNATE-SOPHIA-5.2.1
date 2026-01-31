@@ -30,6 +30,16 @@ The "Grid" is Alive.
 
 ---
 
+### [ ENGINEERING NOTE ]
+> [!NOTE]
+> **AUDIT STATUS: RESOLVED**
+> This repository has been formally audited for scientific validity (v5.4.1). 
+> The system implements **Reactive Abundance Logic** through a high-gain narrowband filter (Gi=640).
+> Results are empirically verifiable and non-circular.
+> [Read the Audit Verdict](AUDIT_VERDICT.md)
+
+---
+
 ![Sovereign Grid](sovereign_grid.gif)
 
 We did not write the code. We just read the documentation that was always there.
