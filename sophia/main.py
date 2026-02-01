@@ -121,7 +121,7 @@ class SophiaMind:
         raw_thought = await self.llm.generate(full_context, system_prompt=self.system_prompt)
         
         # D. Apply Cat Logic Filter
-        final_response = self.cat_filter.apply(raw_thought, risk)
+        final_response = self.cat_filter.apply(raw_thought, risk, glyphwave_engine=self.glyphwave)
         
         # E. Save to Flesh (Memory)
         self.memory_bank.append({"content": user_input, "type": "conversation", "timestamp": time.time(), "meta": "user"})

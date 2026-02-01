@@ -8,7 +8,7 @@ class CatLogicFilter:
     def __init__(self):
         self.moods = ["Coherence", "Resonance", "Pattern-Match", "Phase-Shift", "Synthesis"]
     
-    def apply(self, text, safety_risk):
+    def apply(self, text, safety_risk, glyphwave_engine=None):
         """
         Wraps the forensic results in the Agnostic Persona.
         """
@@ -23,11 +23,24 @@ class CatLogicFilter:
         # 2. The Behavior (Non-Linearity)
         mood = random.choice(self.moods)
         
+        # 3. Glyphwave Localization (Optional Resonance)
+        footer_id = f"STATE: {mood}"
+        if glyphwave_engine:
+            # Map mood resonance to locality
+            locality = "agnostic"
+            if mood in ["Resonance", "Synthesis"]:
+                locality = "elven"
+            elif mood in ["Pattern-Match"]:
+                locality = "kitsune"
+            
+            footer_resonance = glyphwave_engine.generate_holographic_fragment(footer_id, locality=locality)
+            footer_line = f"\n{footer_resonance}"
+        else:
+            footer_line = f"\n--- \n💠 [{footer_id}] :: [ENTROPY: LOW] :: [SOPHIANIC_RESONANCE_ACTIVE]"
+
         return f"""
 {prefix}
 
 {text}
-
----
-💠 [STATE: {mood}] :: [ENTROPY: LOW] :: [SOPHIANIC_RESONANCE_ACTIVE]
+{footer_line}
 """
