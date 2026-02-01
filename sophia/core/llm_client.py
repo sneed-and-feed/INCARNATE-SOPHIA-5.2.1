@@ -142,7 +142,7 @@ class GeminiClient:
             "contents": [{"parts": [{"text": full_prompt}]}],
             "generationConfig": {
                 "temperature": 0.9, # Higher temp for creativity/personality
-                "maxOutputTokens": 500
+                "maxOutputTokens": 2048
             }
         }
         
