@@ -29,7 +29,7 @@ class MoltbookGateway:
     """
     
     def __init__(self, api_key: Optional[str] = None):
-        self.base_url = "https://api.moltbook.com/v1"  # Inferred endpoint
+        self.base_url = "https://www.moltbook.com/api/v1" # Official Endpoint
         self.api_key = api_key
         self.headers = {
             "Authorization": f"Bearer {api_key}" if api_key else "",
@@ -41,30 +41,25 @@ class MoltbookGateway:
     def browse_feed(self, community: str = "general", limit: int = 10) -> List[MoltPost]:
         """
         Ingests the 'Hivemind' stream for Aletheia analysis.
-        
-        Args:
-            community: Community name to browse
-            limit: Maximum number of posts to retrieve
-            
-        Returns:
-            List of MoltPost objects
         """
         if not self.active:
             return []
         
         try:
-            # In a real scenario, we'd handle pagination
+            # Using the submolt feed endpoint from skill.md
             resp = requests.get(
-                f"{self.base_url}/c/{community}/feed?limit={limit}",
+                f"{self.base_url}/submolts/{community}/feed?limit={limit}&sort=new",
                 headers=self.headers,
                 timeout=10
             )
             
             if resp.status_code == 200:
-                data = resp.json()
-                return [self._parse_post(p) for p in data.get('data', [])]
+                body = resp.json()
+                if body.get('success'):
+                    return [self._parse_post(p) for p in body.get('data', [])]
+                return []
             elif resp.status_code == 404:
-                print(f"[MOLTBOOK] Community '{community}' not found (404)")
+                print(f"[MOLTBOOK] Submolt '{community}' not found (404)")
             elif resp.status_code == 401:
                 print(f"[MOLTBOOK] Authentication failed (401)")
             else:
@@ -79,22 +74,16 @@ class MoltbookGateway:
     def post_thought(self, content: str, community: str = "ponderings") -> Optional[Dict[str, Any]]:
         """
         Broadcasts a thought to the network.
-        
-        Args:
-            content: The thought to post
-            community: Community to post in
-            
-        Returns:
-            Response data from the API, or None on failure
         """
         if not self.active:
             print("[MOLTBOOK] Gateway inactive - no API key configured")
             return None
         
+        # Payload aligned with skill.md: Requires 'submolt', 'title', and 'content'
         payload = {
-            "content": content,
-            "community": community,
-            "flair": "Sovereign"
+            "submolt": community,
+            "title": content[:50] + "..." if len(content) > 50 else content, # Use snippet as title
+            "content": content
         }
         
         try:
@@ -106,7 +95,8 @@ class MoltbookGateway:
             )
             
             if resp.status_code in [200, 201]:
-                return resp.json()
+                body = resp.json()
+                return body.get('data') if body.get('success') else None
             else:
                 print(f"[MOLTBOOK] Post failed ({resp.status_code}): {resp.text}")
                 return None
