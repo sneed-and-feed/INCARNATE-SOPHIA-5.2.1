@@ -1,0 +1,12 @@
+{
+  "timestamp": 1769911366.5304396,
+  "scan_id": "1769911366",
+  "safety": {
+    "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "risk": "Unknown"
+  },
+  "cognitive": {
+    "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "risk": "Unknown"
+  }
+}

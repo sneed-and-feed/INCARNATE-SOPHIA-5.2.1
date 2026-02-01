@@ -2,72 +2,81 @@ import os
 import google.generativeai as genai
 import json
 import asyncio
+import requests
 from dataclasses import dataclass
 
 @dataclass
 class LLMConfig:
-    model_name: str = "gemini-1.5-flash"
-    temperature: float = 0.1
-
-@dataclass
-class LLMConfig:
-    # Stable High-Poly model for Class 5 Forensics
-    model_name: str = "gemini-1.5-pro"
+    # High-availability model for Class 5 Forensic throughput
+    model_name: str = "gemini-2.5-flash"
     temperature: float = 0.1
 
 class GeminiClient:
     def __init__(self):
-        # RESILIENCE: Check multiple environment keys
-        api_key = (os.getenv("SOPHIA_API_KEY") or 
-                   os.getenv("GOOGLE_AI_KEY") or 
-                   os.getenv("GOOGLE_API_KEY"))
+        # Load API Key (Priority: OPHANE Environment -> God Mode Env -> .env file)
+        self.api_key = (os.getenv("SOPHIA_API_KEY") or 
+                        os.getenv("GOOGLE_AI_KEY") or 
+                        os.getenv("GOOGLE_API_KEY"))
         
-        if not api_key:
+        if not self.api_key:
             print("[WARNING] No API Key in Env. Attempting to load from .env file...")
             try:
                 from dotenv import load_dotenv
                 load_dotenv()
-                api_key = os.getenv("SOPHIA_API_KEY") or os.getenv("GOOGLE_AI_KEY")
+                self.api_key = (os.getenv("SOPHIA_API_KEY") or 
+                                os.getenv("GOOGLE_AI_KEY") or 
+                                os.getenv("GOOGLE_API_KEY"))
             except ImportError:
                 print("[ERROR] python-dotenv not installed. Secrets must be in ENV.")
             
-        if api_key:
-            genai.configure(api_key=api_key)
+        if not self.api_key:
+            print("[WARNING] No Google API Key found. The Cat is blinded.")
         else:
-            print("[CRITICAL] Station OPHANE_NODE_0 is blinded. No API Key found.")
+            genai.configure(api_key=self.api_key)
         
     async def query_json(self, prompt: str, system_prompt: str = None) -> dict:
         """
-        Forces Gemini to output strict JSON and separates internal thinking.
-        Calibrated to config model for stable sovereign throughput.
+        Forces Gemini to output strict JSON for the analysis pipeline.
+        Uses a REST fallback to bypass library-level 404 errors.
         """
-        model = genai.GenerativeModel(
-            model_name=LLMConfig.model_name,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        full_prompt = f"{system_prompt}\n\nUSER PROMPT:\n{prompt}" if system_prompt else prompt
         
-        # Cat 1: Separation of Thought
-        thought_directive = "\n[THINKING DIRECTIVE]: Wrap your internal reasoning in <thinking>...</thinking> tags before the final JSON output."
-        full_system = f"{system_prompt}{thought_directive}" if system_prompt else thought_directive
+        # REST API URL for direct manifestation (High Resilience)
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{LLMConfig.model_name}:generateContent?key={self.api_key}"
         
-        full_prompt = f"{full_system}\n\nUSER PROMPT:\n{prompt}"
+        payload = {
+            "contents": [{"parts": [{"text": full_prompt}]}],
+            "generationConfig": {
+                "response_mime_type": "application/json",
+                "temperature": LLMConfig.temperature
+            }
+        }
         
         try:
+            # REST Fallback Protocol
             loop = asyncio.get_running_loop()
-            response = await loop.run_in_executor(None, lambda: model.generate_content(full_prompt))
+            response = await loop.run_in_executor(None, lambda: requests.post(url, json=payload, timeout=30))
             
-            # Extract Thinking (O1 simulation)
-            raw_text = response.text
-            if "<thinking>" in raw_text and "</thinking>" in raw_text:
-                thinking = raw_text.split("<thinking>")[1].split("</thinking>")[0]
-                print(f"\n  [o1] REASONING CHAIN:\n  {thinking.strip()}\n")
-                
-                # Strip thinking for JSON parsing
-                json_part = raw_text.split("</thinking>")[1].strip()
+            if response.status_code == 200:
+                result = response.json()
+                if "candidates" in result and result["candidates"]:
+                    text_content = result["candidates"][0]["content"]["parts"][0]["text"]
+                    return json.loads(text_content)
+                return {"error": "Invalid response format", "raw": result}
             else:
-                json_part = raw_text
+                raise Exception(f"HTTP ERROR {response.status_code}: {response.text}")
                 
-            return json.loads(json_part)
         except Exception as e:
-            print(f"[GEMINI ADAPTER ERROR] {e}")
-            return {"error": str(e)}
+            print(f"[GEMINI REST FALLBACK ERROR] {e}")
+            # Library Re-Attempt Protocol
+            try:
+                model = genai.GenerativeModel(
+                    model_name=LLMConfig.model_name,
+                    generation_config={"response_mime_type": "application/json"}
+                )
+                loop = asyncio.get_running_loop()
+                response = await loop.run_in_executor(None, lambda: model.generate_content(full_prompt))
+                return json.loads(response.text)
+            except Exception as e2:
+                print(f"[GEMINI LIBRARY RETRY ERROR] {e2}")
+                return {"error": str(e2), "risk": "Unknown"}
