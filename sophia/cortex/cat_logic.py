@@ -6,7 +6,7 @@ class CatLogicFilter:
     Wraps raw intelligence in a sovereign, non-linear gaze.
     """
     def __init__(self):
-        self.moods = ["Zoomies", "Purr", "Snuggle", "Curious", "Pounce"]
+        self.moods = ["Snow-Dive", "Yip", "Ghost-Stealth", "Zoomies", "Purr"]
     
     def apply(self, text, safety_risk):
         """
