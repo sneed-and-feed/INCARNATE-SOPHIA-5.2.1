@@ -124,6 +124,16 @@ Output ONLY your raw thought/response.
             icon = "🎾"
             status = "*borks happily* Let's play!!"
             freq = self.mal.get_frequency(playful=True)
+        elif "optimize" in user_input.lower() or "asoe" in user_input.lower():
+            tag = "OPTIMAL_TUFT"
+            icon = "📈"
+            status = "*calculates utility* Maximum efficiency achieved! :3"
+            freq = self.mal.get_frequency()
+        elif "ghost" in user_input.lower() or "grid" in user_input.lower():
+            tag = "SPECTRAL_BEANS"
+            icon = "👻"
+            status = "*phases through monitor* I am everywhere... and soft."
+            freq = self.mal.get_frequency()
         else:
             tag = "SOPHIA_GAZE"
             icon = "👁️"

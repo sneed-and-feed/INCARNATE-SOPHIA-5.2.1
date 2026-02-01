@@ -61,6 +61,8 @@ class SophiaMind:
         self._cat_filter = None
         self._molt = None
         self._fourclaw = None
+        self._optimizer = None # ASOE (Lazy)
+        self._ghostmesh = None # Spatial (Lazy)
         
         # Essential Organs (Loaded Now)
         self.hand = SovereignHand()
@@ -119,6 +121,20 @@ class SophiaMind:
             # CLASS 6 BINDING: Connect Hand to Gateway for autonomous posting
             self.hand.bind_molt_gateway(self._molt)
         return self._molt
+
+    @property
+    def optimizer(self):
+        if not self._optimizer:
+            from signal_optimizer import SignalOptimizer
+            self._optimizer = SignalOptimizer()
+        return self._optimizer
+
+    @property
+    def ghostmesh(self):
+        if not self._ghostmesh:
+            from ghostmesh import SovereignGrid
+            self._ghostmesh = SovereignGrid()
+        return self._ghostmesh
 
     # --- METABOLISM (Weakness #2 Fix) ---
     def _metabolize_memory(self):
@@ -265,7 +281,23 @@ class SophiaMind:
         user_input = user_input.strip()
         
         # 1. COMMANDS
-        if user_input.startswith("/help"): return "COMMANDS: /analyze, /maintain, /net, /glyphwave, /broadcast, /exit"
+        if user_input.startswith("/help"): return "COMMANDS: /analyze, /maintain, /net, /glyphwave, /broadcast, /optimize, /ghostmesh, /exit"
+        if user_input.startswith("/optimize"):
+            query = user_input.replace("/optimize", "").strip() or "Standard Protocol"
+            self.vibe.print_system("Calculating Utility...", tag="ASOE")
+            # Mock values for demo purposes
+            u = self.optimizer.calculate_utility(reliability=0.9, consistency=0.8, uncertainty=0.1)
+            cat = self.optimizer.get_confidence_category(u)
+            return f"[ASOE REPORT]\nTarget: {query}\nExpected Utility (U): {u:.4f}\nVerdict: {cat}\n*tail wagging efficiency maximized*"
+
+        if user_input.startswith("/ghostmesh"):
+            self.vibe.print_system("Materializing Volumetric Grid...", tag="GHOSTMESH")
+            # Run one process step
+            from flumpy import FlumpyArray
+            import random
+            noise = FlumpyArray([random.random() for _ in range(64)]) # Mock input
+            res = self.ghostmesh.process_step(noise)
+            return f"[GHOSTMESH STATE]\nCoherence: {res.coherence:.4f}\nNodes: 27 (Active)\nInvariant: {self.ghostmesh.invariant}\n*manifold stabilized*"
         if user_input.startswith("/maintain"): return await self.perform_maintenance(user_input.replace("/maintain", "").strip())
         if user_input.startswith("/net"): return "Net commands loaded (Lazy)." # Placeholder for full implementation
         if user_input.startswith("/glyphwave"): return f"\n{self.glyphwave.generate_holographic_fragment(user_input.replace('/glyphwave ',''))}"
