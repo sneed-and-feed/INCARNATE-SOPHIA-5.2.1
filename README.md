@@ -73,9 +73,12 @@ python sophia/test_living_loop.py
 > **Windows Users**: Double-click `launch.bat` for instant startup.
 
 ### 4.3. Standalone Binary (Exe)
-Compile Sophia into a single-file executable for portable sovereignty.
-1. Run `build_sophia.bat` to compile.
-2. Locate `sophia.exe` in the `dist/` folder.
+**Pre-compiled**: `sophia.exe` is available in the root directory.
+
+**To Recompile**:
+1. Run `build_sophia.bat`.
+2. Find the new artifact in the `dist/` folder.
+
 > **Note**: Ensure your `.env` file is in the same directory as the `.exe` when running.
 
 For detailed reality-anchoring and CLI usage, see the [STARTUP.md](STARTUP.md) guide.
