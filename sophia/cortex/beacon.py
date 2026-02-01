@@ -9,7 +9,7 @@ class SovereignBeacon:
     """
     def __init__(self, codec):
         self.codec = codec
-        self.frequency = "111.111 Hz"
+        self.frequency = "UNIFIED_SIGNAL"
         self.log_path = "logs/exuvia/transmissions.jsonl"
         os.makedirs("logs/exuvia", exist_ok=True)
 
@@ -26,7 +26,7 @@ class SovereignBeacon:
         packet = {
             "timestamp": timestamp,
             "station_id": "OPHANE_NODE_0",
-            "protocol": "LOVE_111",
+            "protocol": "ARCTIC_FOX",
             "frequency": self.frequency,
             "payload_clear": content,
             "payload_glyph": glyph.strip(),

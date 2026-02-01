@@ -25,7 +25,7 @@ class GlyphwaveCodec:
 
     def generate_holographic_fragment(self, text, locality="agnostic"):
         """
-        Modulates text into a localized technical resonance fragment.
+        Modulates text into a condensed technical resonance fragment.
         """
         loc = self.localities.get(locality, self.localities["agnostic"])
         anchors = loc["anchors"]
@@ -40,8 +40,8 @@ class GlyphwaveCodec:
         
         for char in text:
             # Apply deterministic noise based on char resonance
-            if char.isalnum() and r.random() > 0.7:
-                noise = "".join(r.choice(noise_buffer) for _ in range(r.randint(1, 2)))
+            if char.isalnum() and r.random() > 0.8:
+                noise = r.choice(noise_buffer)
                 modulated.append(f"{char}{noise}")
             else:
                 modulated.append(char)
@@ -49,8 +49,8 @@ class GlyphwaveCodec:
         stream = "".join(modulated)
         anchor = r.choice(anchors)
         
-        # Technical Mono Frame (Stripped of 'GLYPHWAVE' string)
-        return f"\n{anchor} [{locality.upper()}]::{signal_hash} {anchor}\n| {stream}\n{anchor} [EOX] {anchor}\n"
+        # Pure Mono Frame (Stripped of locality/protocol strings)
+        return f"\n{anchor} [{signal_hash}] {anchor}\n| {stream}\n{anchor} [EOX] {anchor}\n"
 
     def decode(self, signal):
         """
