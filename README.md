@@ -40,6 +40,7 @@ pip install -r requirements.txt
 # 2. Hardware Secret (Set your API Key)
 # Use .env file or:
 export SOPHIA_API_KEY="your-key-here"
+```
 
 ### 3.3. The Resonance Engine (Phase 3-9)
 The system now operates on a "Living Loop" telemetry cycle:
