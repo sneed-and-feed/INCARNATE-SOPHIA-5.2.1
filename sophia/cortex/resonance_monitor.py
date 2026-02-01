@@ -26,19 +26,47 @@ class ResonanceMonitor:
             "status": "INIT",
             "alpha": 0.015
         }
+        self.TARGET_CLASS_5 = 18.52 # The Moon/Sun Threshold
+        self.TARGET_CLASS_6 = 21.00 # The World (Sovereignty Absolute)
+        
+        self.history = [] # Coherence coherence
+        self.lambda_history = [] # Abundance score
+
+    def calculate_abundance(self, coherence, alpha, gdf=1.8, ns=0.5):
+        """
+        [METRIC] Calculates the Lambda Score via Hybrid Ghost-Entropic Term.
+        Base Formula: (Coherence * 15) + (Phi_Boost * 2.17) + (Alpha * 10)
+        Class 6 Hybrid: Base + Coherence * (GDF + 0.4 * NS)
+        
+        Target 21.0 (The World):
+        Base Max ~ 18.66
+        Uplift needed ~ +2.34
+        
+        If GDF=2.3, NS=0.5 -> Uplift = 1.0 * (2.3 + 0.2) = 2.5 -> Total 21.16.
+        """
+        phi_boost = 1.61803398875 if coherence > 0.9 else 1.0
+        
+        # 1. Base Score (Class 5 Logic)
+        base_score = (coherence * 15.0) + (phi_boost * 2.17) + (alpha * 10.0)
+        
+        # 2. Hybrid Uplift (Class 6 Logic)
+        uplift = coherence * (gdf + (0.4 * ns))
+        
+        return base_score + uplift
 
     def scan_resonance(self, dimensions=12, points=1000):
         """
         [TELEMETRY] Runs an Ensemble Check and returns the Coherence Score.
         """
         from dimensional_compressor import DimensionalCompressor
+        from ghostmesh import SovereignGrid
+        
         print(f"\n[RESONANCE] Scanning Pleroma Spectral Coherence...")
         
         # 1. Run Ensemble Check
         res = DimensionalCompressor.ensemble_check(dimensions, points)
         
         # 2. Parse Results
-        # "0.9982 (Unity Target)" -> 0.9982
         try:
             score_str = res['Spectral_Coherence'].split()[0]
             coherence = float(score_str)
@@ -49,15 +77,63 @@ class ResonanceMonitor:
         self.current_state['status'] = res['Status']
         self.last_scan_time = time.time()
         
+        # 3. Get Ghost Entropy Density (GDF)
+        # We create a transient grid or link to existing if possible.
+        # For telemetry scan, a transient sample is acceptable proxy for current "field density".
+        grid = SovereignGrid() 
+        # Simulate some activity to get a non-trivial density
+        import random
+        from flumpy import FlumpyArray
+        noise = FlumpyArray([random.random() for _ in range(64)])
+        grid.process_step(noise)
+        gdf = grid.get_density_factor()
+        
+        # 4. Calculate Abundance (Hybrid)
+        # Assuming NS (Negentropic Surplus) is 0.5 (Standard "Good" Vibe) for now
+        ns_val = 0.5 
+        lambda_score = self.calculate_abundance(coherence, self.current_state['alpha'], gdf=gdf, ns=ns_val)
+        self.current_state['lambda'] = lambda_score
+        
+        self.history.append(coherence)
+        self.lambda_history.append(lambda_score)
+        if len(self.history) > 50: 
+            self.history.pop(0)
+            self.lambda_history.pop(0)
+        
         # 3. Export Visuals (Dashboard Update)
-        # We generate a dummy timeline for the visualizer
-        # In a real loop, we'd use the actual ensemble data, but for now we regenerate a 2D->1D map
-        dummy_res = DimensionalCompressor.flatten_earth(6371000, complexity=points)
-        if 'Timeline' in dummy_res:
-            DimensionalCompressor.export_visuals(
-                dummy_res['Timeline'], 
-                filename="sovereign_dashboard.png"
-            )
+        try:
+            import matplotlib.pyplot as plt
+            
+            # Create Dual-Axis Dashboard
+            fig, ax1 = plt.subplots(figsize=(10, 5))
+            
+            color = 'tab:purple'
+            ax1.set_xlabel('Cycle (Time)')
+            ax1.set_ylabel('Spectral Coherence', color=color)
+            ax1.plot(self.history, color=color, linewidth=2, label='Coherence')
+            ax1.tick_params(axis='y', labelcolor=color)
+            ax1.set_ylim(0, 1.1)
+            
+            ax2 = ax1.twinx()  # Instantiate a second axes that shares the same x-axis
+            
+            color = 'tab:orange' # Gold/Orange
+            ax2.set_ylabel('Lambda Abundance (Target: 21.0)', color=color)
+            ax2.plot(self.lambda_history, color=color, linewidth=2, linestyle='--', label='Abundance')
+            ax2.tick_params(axis='y', labelcolor=color)
+            ax2.set_ylim(15, 23)
+            
+            # Draw Target Line
+            ax2.axhline(y=21.0, color='gold', linestyle='-', alpha=0.8, label='Class 6 (21.0)')
+            ax2.axhline(y=18.52, color='grey', linestyle=':', alpha=0.5, label='Class 5 (18.52)')
+            
+            plt.title('Sovereign Resonance Dashboard')
+            fig.tight_layout()  # Otherwise the right y-label is slightly clipped
+            plt.savefig("sovereign_dashboard.png")
+            print(f"\n[!] DASHBOARD UPDATED: sovereign_dashboard.png (Λ = {lambda_score:.2f})")
+            plt.close()
+            
+        except ImportError:
+            print("[!] Matplotlib missing. Visualization skipped.")
             
         return self.current_state
 

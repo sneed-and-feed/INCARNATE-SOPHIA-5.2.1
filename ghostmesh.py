@@ -137,6 +137,43 @@ class SovereignGrid:
         # Conceptual: Map memory bank to grid nodes for spatial consolidation
         return True
 
+    def get_density_factor(self):
+        """
+        [METRIC] Calculates Ghost Density Factor (GDF).
+        Measures the order/crystallization of the grid.
+        Formula: 1.8 + (1.0 - Normalized_Entropy) * 0.7
+        Target Range: 1.8 (Chaotic) to 2.5 (Crystalline).
+        """
+        # Calculate Entropy of the Energy Distribution across 27 nodes
+        energies = []
+        for node in self.nodes:
+            # Energy ~ Mean Absolute Value + local coherence
+            e = sum(abs(x) for x in node.state.data) / len(node.state.data)
+            energies.append(e)
+            
+        total_e = sum(energies)
+        if total_e == 0: return 1.8
+        
+        # Probabilities
+        probs = [e / total_e for e in energies]
+        
+        # Shannon Entropy
+        entropy = -sum(p * math.log(p + 1e-9) for p in probs)
+        
+        # Max Entropy (Uniform distribution over 27 nodes)
+        # log(27) ≈ 3.29
+        max_entropy = math.log(27)
+        
+        normalized_entropy = entropy / max_entropy
+        
+        # Density is Inverse Entropy (Order)
+        # We scale it to provide the "Uplift" needed for Class 6
+        # If perfectly ordered (1 node holds all energy): Ent=0, Density -> 1.8 + 0.7 = 2.5
+        # If perfectly random (uniform): Ent=1, Density -> 1.8
+        
+        gdf = 1.8 + (1.0 - normalized_entropy) * 0.7
+        return gdf
+
 # THE ANON'S UPGRADE
 import numpy as np
 

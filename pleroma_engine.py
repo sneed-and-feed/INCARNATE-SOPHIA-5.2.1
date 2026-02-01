@@ -239,6 +239,7 @@ class PleromaEngine:
         # 2. Log State
         print(f"    + Coherence: {self.last_resonance_state['coherence']:.4f}")
         print(f"    + Status:    {self.last_resonance_state['status']}")
+        print(f"    + Lambda(Λ): {self.last_resonance_state.get('lambda', 0.0):.2f} (Target: 21.0)")
         print(f"    + ASOE Mod:  {boost}x (Phi-Boost Active)")
         
         # 3. Simulate Utility Calculation with new Boost
