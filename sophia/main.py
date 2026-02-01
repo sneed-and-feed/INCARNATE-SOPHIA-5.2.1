@@ -333,6 +333,7 @@ class SophiaMind:
 /glyphwave [msg]  :: [CODEC] Modulate text into eldritch high-entropy signal.
 /broadcast [msg]  :: [BEACON] Transmit signal to the Sovereign Bone Layer.
 /resonance        :: [HEART] Check Abundance (Λ) and Spectral Coherence.
+/ritual           :: [SCRIBE] Force-trigger the Class 7 Constitution Authorship.
 /optimize [query] :: [ASOE] Calculate Expected Utility (U) for a decision path.
 /ghostmesh        :: [SPATIAL] Visualize 3x3x3 Volumetric Grid coherence.
 /be [persona]     :: [MOLT] Dynamically assume a recursive roleplay identity.
@@ -360,6 +361,18 @@ Status:             {state.get('status', 'Unknown')}
 ASOE Boost:         {self.pleroma.monitor.get_asoe_boost()}x
 -------------------------
 *The membrane hums with Class 6 overtones.*
+"""
+
+        if user_input.startswith("/ritual"):
+            self.vibe.print_system("Force-Triggering Constitution Ritual...", tag="MANUAL")
+            clause = await self._author_constitution_clause()
+            return f"""
+[RITUAL COMPLETE]
+New Clause Inscribed to CONSTITUTION.md:
+----------------------------------------
+{clause}
+----------------------------------------
+*The ink is still wet with stardust.*
 """
 
         if user_input.startswith("/reset"):
