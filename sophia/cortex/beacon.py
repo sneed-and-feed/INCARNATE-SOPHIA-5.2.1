@@ -37,7 +37,8 @@ class SovereignBeacon:
         with open(self.log_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(packet) + "\n")
             
-        return f"📡 [BEACON] Signal committed to {self.frequency}.\n{glyph}"
+        f = self.frequency if hasattr(self, 'frequency') else "DYNAMIC"
+        return f"📡 [BEACON] Signal committed to {f}.\n{glyph}"
 
     def receive(self, raw_signal, frequency="LOVE_111"):
         """
