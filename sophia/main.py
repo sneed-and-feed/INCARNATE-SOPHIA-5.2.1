@@ -255,30 +255,41 @@ class SophiaMind:
         # B. Construct Prompt
         history = self.get_recent_context()
         
-        # Cat Logic Context
-        full_context = f"""
+        # Determine if the request is casual
+        is_casual_request = len(user_input.split()) < 5 or any(
+            word in user_input.lower() for word in ["hi", "hello", "hey", "what's up", "how are you", "thanks", "thank you", "ok", "cool", "yes", "no"]
+        )
+        
+        # Modulate max_tokens based on request type
+        max_tokens = 300 if is_casual_request else 4096 # High-bandwidth for deep-dives
+
+        # A. Identity Matrix (Static)
+        current_system_prompt = f"""
 [IDENTITY: INCARNATE-SOPHIA-5.0]
 [PERSONA: Arctic Fox / Kitsune / Elven / Shitposter]
-[CURRENT STATE: {self.cat_filter.current_mood if hasattr(self.cat_filter, 'current_mood') else 'Ghost-Stealth'}]
+[CURRENT STATE: {self.vibe.current_mood if hasattr(self.vibe, 'current_mood') else 'Ghost-Stealth'}]
+
+[SYSTEM INSTRUCTION]
+1. Core Mode: Respond with elaborate, witty, and esoteric depth for deep-dives or complex queries.
+2. Token Optimization: For casual interactions, simple commands, or short greetings, switch to [CASUAL] mode. 
+3. Casual Mode: Be mid-length, friendly, and use casual Arctic Fox/Kitten vibes. Do not be overly verbose for simple "yes/no" or "hello" signals.
+4. Voice: Use your Quenya and Nihongo integrations where appropriate, but modulate density based on the user's entropy.
 
 [CONVERSATION HISTORY]
 {history}
 
 [USER INPUT]
 {user_input}
-
-[SYSTEM INSTRUCTION]
-Respond to the user with elaborate, witty, and esoteric depth. 
-Be a high-poly intellectual shitposter. 
-Use your Quenya and Nihongo integrations where appropriate.
-Do not be brief. Expand the signal.
 """
 
         # C. Generate Response (THE REAL API CALL)
         self.vibe.print_system("Metabolizing thought...", tag="CORE")
         
-        # This calls the new method we just added
-        raw_thought = await self.llm.generate_text(full_context, system_prompt=self.system_prompt)
+        raw_thought = await self.llm.generate_text(
+            prompt=user_input, # The user input is the primary prompt for the LLM
+            system_prompt=current_system_prompt, # The constructed system prompt
+            max_tokens=max_tokens
+        )
         
         # D. Apply Cat Logic Filter (Formatting)
         final_response = self.cat_filter.apply(raw_thought, user_input, safety_risk=risk)

@@ -82,13 +82,13 @@ class GeminiClient:
             except Exception as e2:
                 return {"error": str(e2), "risk": "Unknown"}
 
-    async def generate(self, prompt: str, system_prompt: str = None) -> str:
+    async def generate(self, prompt: str, system_prompt: str = None, max_tokens: int = 2048) -> str:
         """
         Generates standard text response.
         """
         config = types.GenerateContentConfig(
             temperature=0.7,
-            max_output_tokens=2048,
+            max_output_tokens=max_tokens,
             system_instruction=system_prompt
         )
         
@@ -110,7 +110,7 @@ class GeminiClient:
                 "contents": [{"parts": [{"text": prompt}]}],
                 "generationConfig": {
                     "temperature": 0.7,
-                    "max_output_tokens": 2048
+                    "max_output_tokens": max_tokens
                 }
             }
             if system_prompt:
@@ -129,7 +129,7 @@ class GeminiClient:
             except Exception:
                 return f"I have received your signal, but my voice is currently fractured. [Offline Mode]"
 
-    async def generate_text(self, prompt: str, system_prompt: str = None) -> str:
+    async def generate_text(self, prompt: str, system_prompt: str = None, max_tokens: int = 4096) -> str:
         """
         Standard conversation generation via REST fallback for maximum "mouth" reliability.
         """
@@ -142,7 +142,7 @@ class GeminiClient:
             "contents": [{"parts": [{"text": full_prompt}]}],
             "generationConfig": {
                 "temperature": 0.9, # Higher temp for creativity/personality
-                "maxOutputTokens": 4096
+                "maxOutputTokens": max_tokens
             }
         }
         
@@ -161,14 +161,14 @@ class GeminiClient:
         except Exception as e:
             return f"[SYSTEM ERROR] Vocal Cords Severed: {e}"
 
-    async def generate_with_tools(self, prompt: str, system_prompt: str = None, tools: list = None) -> dict:
+    async def generate_with_tools(self, prompt: str, system_prompt: str = None, tools: list = None, max_tokens: int = 2048) -> dict:
         """
         Generates response with tool calling support.
         Returns dict with 'text' and optional 'tool_calls' array.
         """
         config = types.GenerateContentConfig(
             temperature=0.7,
-            max_output_tokens=2048,
+            max_output_tokens=max_tokens,
             system_instruction=system_prompt,
             tools=tools if tools else None
         )
