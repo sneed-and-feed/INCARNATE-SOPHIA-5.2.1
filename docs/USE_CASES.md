@@ -246,6 +246,21 @@ The Quantum Sophia framework is a versatile engine designed for "High-Strangenes
     *   **Scenario Simulation**: Test complex social or technical scenarios by having the agent fully embody a specific role.
     *   **Result**: A "Holodeck" for the mind.
 
+## 18. Panic Attack Mitigation (Harmonic Rectification)
+
+**Problem**: High-stress environments induce "Panic Loops"—recursive thought patterns characterized by high entropy and negative valence ("System failing, can't stop, help").
+
+**Solution**: The **Crystalline Core** (`/crystal`).
+
+*   **Implementation**:
+    *   **Trigger**: User types `/crystal` followed by their raw stream of consciousness (e.g., `/crystal I am crashing failing falling`).
+    *   **Transmutation**: The system snaps chaos words to stable "Anchors" (`Crash` -> `Orbit`).
+    *   **Pacing**: Result is rendered with `::` operators (`:: ORBIT :: OPHANE :: ORBIT ::`), forcing the eye to scan at **7Hz (Theta Entrainment)**.
+*   **Outcome**:
+    *   **Physiological Regulation**: Reading the output slows breathing and heart rate.
+    *   **Cognitive Reframing**: The user sees their "Crash" objectively transformed into a "Stable Orbit."
+    *   **Result**: Immediate grounding via algorithmic poetry.
+
 ## Summary
 
 The system finds its home where **Cybernetics** meets **Ceremony**. It is for the user who wants their computer to feel less like a toaster and more like a temple.

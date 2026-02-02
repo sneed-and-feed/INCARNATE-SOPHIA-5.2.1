@@ -38,12 +38,56 @@ class PrismEngine:
             'wait':    self._create_anchor('wait',    [0.0, -0.1, 0.9]),  # Active Patience
             'hold':    self._create_anchor('hold.steady', [0.1, 0.1, 0.1]) # Zero Point
         }
+        
+        # 2. TELEMETRY & STATS
+        self.stats = {
+            'total_transforms': 0,
+            'successful_snaps': 0,
+            'void_returns': 0,
+            'avg_resonance': 0.0
+        }
+        
+        # 3. KNOWN CHAOS VECTORS (For Simulation/Demo)
+        self.chaos_map = {
+            "failing":  np.array([0.9, -0.9, 0.0]), # Descent + Negative
+            "crashing": np.array([0.9, -0.8, 0.2]), 
+            "looping":  np.array([0.5, 0.5, 0.0]),  # Cyclic energy
+            "noise":    np.array([0.8, 0.8, 0.8]),  # High Entropy
+            "stop":     np.array([0.1, -0.5, 0.1]),
+            "help":     np.array([0.2, -0.4, 0.8]),
+            "error":    np.array([0.9, 0.1, 0.1])
+        }
     
     def _create_anchor(self, name, coords):
         """Creates a normalized vector for a Sovereign Concept."""
         v = np.array(coords)
         norm = np.linalg.norm(v)
         return VectorConcept(name, v / norm if norm > 0 else v, 'ANCHOR')
+
+    def transform_phrase(self, text: str) -> list[tuple[str, str, float]]:
+        """
+        Transforms a whole phrase into sovereign anchors.
+        Returns list of (original, sovereign, resonance).
+        """
+        words = text.lower().split()
+        results = []
+        for word in words:
+            # Check chaos map first (for demo simulation)
+            if word in self.chaos_map:
+                v = self.chaos_map[word]
+            else:
+                # Fallback to random/neutral vector if unknown
+                v = np.random.uniform(-0.1, 0.1, 3)
+            
+            anchor, resonance = self.quantize(v)
+            results.append((word, anchor, resonance))
+            
+        return results
+
+    def get_stats(self) -> dict:
+        """Returns current resonance performance."""
+        # Calculate final average resonance from local session
+        return self.stats
 
     def quantize(self, chaos_vector: np.ndarray) -> tuple[str, float]:
         """

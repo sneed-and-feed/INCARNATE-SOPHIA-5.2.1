@@ -26,6 +26,15 @@ class TemplateStyle(Enum):
     ANCHOR = "anchor" # High Energy (Panic/Anxiety)
     SPARK = "spark"  # Zero Energy (Apathy)
 
+from dataclasses import dataclass
+
+@dataclass
+class WeaveResult:
+    rendered: str
+    energy_signature: str
+    template_style: TemplateStyle
+    avg_resonance: float
+
 class LoomEngine:
     def __init__(self):
         self.core_token = "OPHANE"
@@ -38,9 +47,10 @@ class LoomEngine:
             "default": ":: {concept} :: {core} :: {concept} ::"
         }
         
-    def weave(self, concept: str, style_override: TemplateStyle = None) -> str:
+    def weave(self, concept: str, style_override: TemplateStyle = None, resonance: float = 0.95) -> WeaveResult:
         """
         Applies geometric structure to sovereign words.
+        Returns a WeaveResult explaining the transformation.
         """
         # Auto-detect style based on concept? 
         # For now, default to ANCHOR (High Structure) unless overridden
@@ -48,14 +58,26 @@ class LoomEngine:
         
         template = self.templates[style]
         
-        return template.format(
+        rendered = template.format(
             concept=concept.upper(),
             core=self.core_token
         )
+        
+        # Energy detection (Simulation for Demo)
+        energy = "high" if style == TemplateStyle.ANCHOR else "low"
+        if style == TemplateStyle.SPARK: energy = "zero"
+        
+        return WeaveResult(
+            rendered=rendered,
+            energy_signature=energy,
+            template_style=style,
+            avg_resonance=resonance
+        )
 
     def render_transmission(self, concept: str) -> str:
-        """Legacy alias for weave."""
-        return self.weave(concept)
+        """Legacy alias for weave. Returns string for backward compatibility."""
+        result = self.weave(concept)
+        return result.rendered
 
 # // TEST HARNESS
 if __name__ == "__main__":
