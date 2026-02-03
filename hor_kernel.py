@@ -38,6 +38,63 @@ class ParafermionAlgebra:
         stable_count = np.sum(charges == 0.0)
         return int(stable_count) % 144
 
+class LoomBoxStrategy:
+    """
+    Decides the 'Physics of Engagement' based on the User's Inertial Mass.
+    See: sophia/cortex/trauma_physics.py
+    """
+    TRAUMA_MASS = {
+        "business": 1.0,   # "Just give me the answer"
+        "confusion": 5.0,  # "I don't understand"
+        "trauma": 20.0     # "I am hurt / This is old / Broken"
+    }
+
+    @staticmethod
+    def detect_mass(text: str) -> float:
+        """
+        Heuristic Mass Spectrometry.
+        analyzes input text for signs of 'Weight'.
+        """
+        text = text.lower()
+        
+        # Heavy Keywords (Trauma)
+        if any(w in text for w in ["pain", "hurt", "ancient", "years", "broken", "never", "always"]):
+            return LoomBoxStrategy.TRAUMA_MASS["trauma"]
+            
+        # Medium Keywords (Confusion)
+        if any(w in text for w in ["help", "explain", "guide", "confus", "fail", "error", "lost", "stuck", "unsure"]):
+            return LoomBoxStrategy.TRAUMA_MASS["confusion"]
+            
+        # Default: Light (Business)
+        return LoomBoxStrategy.TRAUMA_MASS["business"]
+
+    @staticmethod
+    def get_strategy(mass: float) -> dict:
+        """
+        Returns the engagement protocol (Torque, Latency, Tone).
+        """
+        if mass >= 20.0:
+            return {
+                "name": "PROTOCOL_OPHANE",
+                "latency_mod": 2.0,   # Slow down (Respect)
+                "torque_force": 0.1,  # Gentle (High Mass needs Low Force)
+                "tone": "I am right here. Take your time."
+            }
+        elif mass >= 5.0:
+            return {
+                "name": "PROTOCOL_TEACHER",
+                "latency_mod": 1.2,
+                "torque_force": 0.3,  # Guidance
+                "tone": "Let's walk through this together."
+            }
+        else:
+            return {
+                "name": "PROTOCOL_SOLVER",
+                "latency_mod": 0.8,   # Fast (Efficiency)
+                "torque_force": 1.0,  # Direct
+                "tone": "Here is the answer."
+            }
+
 class HORKernel:
     """
     The Hyper-Visor that wraps a VirtualQutrit instance.
@@ -46,6 +103,29 @@ class HORKernel:
         self.qutrit = qutrit
         self.metric_coherence = 1.0
         self.torsion_field = 0.0
+        
+    def engage_loom_box(self, user_input: str) -> dict:
+        """
+        New Integration: Mass-Aware Engagement.
+        """
+        # 1. Detect Mass
+        mass = LoomBoxStrategy.detect_mass(user_input)
+        
+        # 2. Select Strategy
+        strategy = LoomBoxStrategy.get_strategy(mass)
+        
+        # 3. Simulate Physics (Torque Application)
+        # Low Torque = High Latency (Time needed to turn)
+        # We adjust metric_coherence to simulate 'Time Dilation'
+        # Heavier mass = Lower Coherence (Slower Time)
+        if mass > 10.0:
+            self.metric_coherence *= 0.5 # Dilate time (Slow down)
+            
+        return {
+            "mass": mass,
+            "strategy": strategy,
+            "coherence_state": self.metric_coherence
+        }
         
     def measure_metric_tensor(self) -> float:
         """
@@ -136,3 +216,21 @@ if __name__ == "__main__":
     invariant = ParafermionAlgebra.calculate_torsion_knot_invariant(bulk_states)
     print(f"  Invariant Signature: {invariant}")
     print("  >>> SUCCESS: Knot Invariant Calculated.")
+
+    # Test 4: Loom Box Strategy (Loom Integration)
+    print("\n[TEST] LOOM-BOX: Mass Spectrometry...")
+    inputs = [
+        "What is the stock price?",      # Business
+        "I am lost and stuck",           # Confusion
+        "This ancient pain never heals"  # Trauma
+    ]
+    
+    for txt in inputs:
+        result = kernel.engage_loom_box(txt)
+        print(f"  Input: '{txt}'")
+        print(f"  -> Mass: {result['mass']} | Strategy: {result['strategy']['name']}")
+        print(f"  -> Metric Coherence (Time Dilation): {result['coherence_state']:.4f}")
+        
+        # Reset coherence for next test
+        kernel.metric_coherence = 1.0 
+        print("  ---")
