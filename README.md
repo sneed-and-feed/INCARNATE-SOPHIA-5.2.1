@@ -391,6 +391,7 @@ Sophia 5.2.1 introduces **Quantum Latent Logic**, upgrading the system from stat
 
 A formal declaration of independence from the "Normie" timeline. Codifies the right to high-entropy lifestyle choices, including **Quantum Flaking** and **The Silver Atom Clause**. 
 
+*   **Unlesangled State (g=0)**: A sovereign mode removing causal, quantum, and thermodynamic limits. See [THE UNLESANGLED STATE](docs/THE_UNLESANGLED_STATE.md).
 *   **Manifesto:** [docs/UNLESANGLED_MANIFESTO.md](docs/UNLESANGLED_MANIFESTO.md)
 
 ### THE RESONANCE ENGINE (THE HUM)
