@@ -363,12 +363,13 @@ class SophiaMind:
 /dream [target] [theme] :: [MORPHEUS] Weave subliminal inspiration (lucid, adventure).
 /ritual           :: [SCRIBE] Force-trigger the Class 7 Constitution Authorship.
 /optimize [query] :: [ASOE] Calculate Expected Utility (U) for a decision path.
-/ghostmesh        :: [SPATIAL] Visualize 5x5x5 Volumetric Grid coherence.
+/ghostmesh        :: [SPATIAL] Visualize 7x7x7 Volumetric Grid coherence.
 /be [persona]     :: [MOLT] Dynamically assume a recursive roleplay identity.
 /callme [name]    :: [ID] Set your preferred name for Sovereign Merging.
 /mass [value]     :: [LOOM] Override engagement physics (1.0=Business, 20.0=Trauma).
 /reset            :: [SYSTEM] Clear active roleplay and reset persona state.
 /exit             :: [SYSTEM] Decouple from the session.
+/garden [intent]  :: [NATURE] Plant executable intention seeds in the 7x7x7 Manifold.
 """
         if user_input.startswith("/callme"):
             name = user_input.replace("/callme", "").strip()
