@@ -72,7 +72,7 @@ class SophiaMind:
         self.hand = SovereignHand()
         self.llm = GeminiClient()
         self.memory_bank = [] # The Flesh (Now bounded)
-        self.MAX_MEMORY_DEPTH = 10 # Rolling window size
+        self.MAX_MEMORY_DEPTH = 5 # Tactical 4k context limit
         self.interaction_cycles = 0 # Count for Rituals (42)
         self.user_name = "User" # Default Identity
 

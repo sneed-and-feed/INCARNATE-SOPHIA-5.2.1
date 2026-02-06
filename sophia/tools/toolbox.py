@@ -153,6 +153,24 @@ class SovereignHand:
                                 }
                             }
                         }
+                    },
+                    {
+                        "name": "duckduckgo_search",
+                        "description": "Performs a sovereign web search using DuckDuckGo. No API key required. Scrapes results directly. (Error 29 proof).",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "query": {
+                                    "type": "string",
+                                    "description": "The search query."
+                                },
+                                "max_results": {
+                                    "type": "integer",
+                                    "description": "Number of results to return (default 5)."
+                                }
+                            },
+                            "required": ["query"]
+                        }
                     }
                 ]
             }
@@ -189,8 +207,31 @@ class SovereignHand:
         elif tool_name == "dub_techno":
             from sophia.tools.dub_techno import generate_dub_techno_sequence
             return generate_dub_techno_sequence(duration_seconds=args.get('duration', 5))
+        elif tool_name == "duckduckgo_search":
+            return self._duckduckgo_search(args.get('query', ''), args.get('max_results', 5))
         
         return f"❌ Unknown Tool: {tool_name}"
+
+    def _duckduckgo_search(self, query: str, max_results: int = 5) -> str:
+        """
+        Sovereign search via DuckDuckGo. 
+        """
+        try:
+            from duckduckgo_search import DDGS
+            with DDGS() as ddgs:
+                results = list(ddgs.text(query, max_results=max_results))
+                if not results:
+                    return f"No results found for: {query}"
+                
+                formatted = [f"### [Sovereign Search: {query}]\n"]
+                for i, r in enumerate(results):
+                    formatted.append(f"{i+1}. **{r['title']}**")
+                    formatted.append(f"   URL: {r['href']}")
+                    formatted.append(f"   Snippet: {r['body']}\n")
+                
+                return "\n".join(formatted)
+        except Exception as e:
+            return f"❌ Sovereign Search Failed: {e}"
 
     def bind_molt_gateway(self, gateway):
         """Binds the Moltbook gateway to the Hand for autonomous posting."""

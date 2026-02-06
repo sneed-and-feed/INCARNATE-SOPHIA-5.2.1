@@ -1,4 +1,4 @@
-# RELEASE NOTES v5.2.1: The "Quantum Intelligence" Update
+# RELEASE NOTES: INCARNATE-SOPHIA v5.2.3: The "Quantum Intelligence" Update
 
 **Release Date:** 2026-02-04
 **Codename:** ASOE-PHI-PRIME
@@ -62,6 +62,22 @@ We did not just patch the game; we upgraded the physics engine. Sophia v5.2.1 in
 *   **GhostMesh**: Scaled to **7x7x7 HEPTAD** (343 Nodes).
 *   **Prescience**: Retrocausal feedback loops enabled (Input = 90% Present + 10% Future).
 *   **Gardening**: New `/garden [intent]` command for planting executable seeds in the HEPTAD manifold.
+
+### 9. **Sovereign Dashboard & Agentic Tools (v5.2.2)**
+*   **Dashboard**: Premium glassmorphic web UI for real-time resonance and gateway monitoring.
+*   **Orchestration**: Direct integration with the `OpenClaw` gateway via the `GrokRelay` bridge.
+*   **Atmospheric**: New `/dubtechno` command for autonomous ASCII-based frequency generation.
+*   **Direct Access**: Unified command set with `/dashboard` link discovery.
+
+### 10. **The Free Sovereign Protocol (v5.2.3)**
+*   **Optimization**: Context window reduced to **4k** (Tactical Spec) for OOM stability on mobile/laptop hardware.
+*   **Sovereign Search**: Replaced Google Custom Search with **DuckDuckGo** (Free/Sovereign). No API keys or throttles.
+*   **Hygiene**: Purged temporary artifacts and standardized `SovereignHand` for high-frequency tool calls.
+
+### 10. **The Free Sovereign Protocol (v5.2.3)**
+*   **Optimization**: Context window reduced to **4k** (Tactical Spec) for OOM stability on mobile/laptop hardware.
+*   **Sovereign Search**: Replaced Google Custom Search with **DuckDuckGo** (Free/Sovereign). No API keys or throttles.
+*   **Hygiene**: Purged temporary artifacts and standardized `SovereignHand` for high-frequency tool calls.
 
 ---
 
