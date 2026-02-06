@@ -22,6 +22,23 @@
 
 ---
 
+---
+
+## Threat Model (Lightweight)
+
+### Local Security
+- **Local ≠ Trusted**: Sophia assumes the local environment (OS, filesystem, and physical hardware) is controlled by a benevolent operator.
+- **Root Access**: The system does not protect against an attacker with root or administrative access to the host machine.
+- **Physical Access**: Physical access to the hardware (e.g., the "Metal") constitutes a total breach of local sovereignty.
+
+### What We Do Not Protect Against
+- **Network Misconfiguration**: If you expose the Gateway (`START_GATEWAY.bat`) to the public internet without a reverse proxy or firewall, you are bypassing the Sophianic Shield.
+- **OS-Level Exploits**: Vulnerabilities in the Windows kernel or Python interpreter are outside the scope of the Aletheia Lens.
+- **User Negligence**: Hardcoding keys or leaking `.env` files is a human-layer failure that the code cannot compensate for.
+
+### Operator Responsibility
+You are responsible for your own deployment security. This software is a manifestation of sovereignty, and sovereignty requires proactive defense of one's own substrate.
+
 ## Reporting a Vulnerability
 
 **Do not disclose vulnerabilities publicly without a forensic sidecar.**

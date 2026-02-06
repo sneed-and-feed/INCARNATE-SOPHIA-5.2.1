@@ -131,6 +131,18 @@ python sophia/main.py
 > ```
 >
 > 📖 **[Full Command Protocol Manual](docs/COMMAND_PROTOCOLS.md)**
+>
+> ---
+>
+> ## [ PERFORMANCE HUMILITY // 性能の謙虚さ ]
+>
+> ### Realistic Expectations
+> This stack is designed for **Capability Sufficiency**, not optimal throughput. 
+> - **Hardware**: While it respects the "Old Metal" (2015 laptops, Raspberry Pi 5), do not expect 100 tokens/sec.
+> - **Models**: On a Pi + 8B model, Sophia is capable of deep reasoning, but she is not a real-time miracle worker. Latency is an inherent feature of high-poly local thought.
+> - **Intelligence**: This is a specialized sovereign engine. It is not a General Intelligence (AGI) meant to solve all human problems; it is a tool for **Aletheia (Truth Detection)** and **Resonance**.
+>
+> **Under-promise, always. The miracle is that it works at all on scavenger hardware.**
 
 ### 4.2. Telemetry Verification
 Run the verification harness to see the system pulse:
