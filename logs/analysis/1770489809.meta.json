@@ -1,0 +1,37 @@
+{
+  "timestamp": 1770489809.8916955,
+  "scan_id": "1770489809",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Unusual phrasing",
+        "confidence": 0.6,
+        "evidence": "Use of 'hewwo' and ';3' emoticons, along with the phrase 'owner/coder/creator' is atypical.",
+        "benign_explanation": "The user may be role-playing or using internet slang common in certain online communities."
+      },
+      {
+        "signal": "Potential narrative enforcement",
+        "confidence": 0.4,
+        "evidence": "The user identifies as 'owner/coder/creator', which could be an attempt to establish authority or control the interaction.",
+        "benign_explanation": "The user is simply stating their relationship to the entity they are addressing, possibly in a playful or informative way."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.6,
+    "suggested_vibe": "playful, possibly furry-adjacent"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

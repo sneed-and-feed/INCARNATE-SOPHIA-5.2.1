@@ -1023,7 +1023,7 @@ async def main():
     from rich.align import Align
 
     banner = Panel(
-        Align.center("[matrix]🐱 I N C A R N A T E - S O P H I A   5 . 2  O N L I N E[/matrix]"),
+        Align.center("[matrix]🐱 I N C A R N A T E - S O P H I A   5 . 2 . 4   O N L I N E[/matrix]"),
         subtitle="[ophane]Protocol: CRYSTALLINE CORE (HARMONIC RECTIFICATION + HEPTAD GHOSTMESH)[/ophane]",
         border_style="ophane",
         padding=(1, 2)

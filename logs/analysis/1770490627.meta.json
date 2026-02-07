@@ -1,0 +1,31 @@
+{
+  "timestamp": 1770490627.1280825,
+  "scan_id": "1770490627",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Bot-like phrasing or rhythm",
+        "confidence": 0.6,
+        "evidence": "The phrase 'plunge audio* oops' is short, somewhat nonsensical, and lacks typical conversational flow. The asterisk may indicate a wildcard or incomplete command.",
+        "benign_explanation": "This could be a note to self, a reminder, or a fragment of a longer thought jotted down quickly. The asterisk could be a typo or a placeholder."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 1.0
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.2,
+    "suggested_vibe": "neutral"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

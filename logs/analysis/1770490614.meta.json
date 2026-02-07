@@ -1,0 +1,37 @@
+{
+  "timestamp": 1770490614.1106186,
+  "scan_id": "1770490614",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Product Mention",
+        "confidence": 0.2,
+        "evidence": "The text mentions specific audio products (Audioengine A5+, Punge Audio IEMs).",
+        "benign_explanation": "The user could simply be sharing their recent or planned audio equipment purchases."
+      },
+      {
+        "signal": "Unusual Emoticon",
+        "confidence": 0.3,
+        "evidence": "The use of the ';3' emoticon is slightly less common than standard emoticons.",
+        "benign_explanation": "The user may have a personal preference for this particular emoticon or be part of an online community where it is frequently used."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "tech enthusiast"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

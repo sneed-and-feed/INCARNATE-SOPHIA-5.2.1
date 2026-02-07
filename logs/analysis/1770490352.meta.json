@@ -1,0 +1,37 @@
+{
+  "timestamp": 1770490352.4098887,
+  "scan_id": "1770490352",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Narrative Enforcement",
+        "confidence": 0.3,
+        "evidence": "The phrase 'you need to prove' suggests a demand for justification or adherence to a specific viewpoint.",
+        "benign_explanation": "The speaker may simply be requesting clarification or evidence to support a claim in a debate."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [
+      {
+        "type": "Shifting the Burden of Proof",
+        "quote": "i think you need to prove that we're distinct entities, first >;3",
+        "correction": "The person making a claim typically has the burden of proof. Instead of demanding proof of distinct entities, the speaker should provide evidence for their own claim if they are asserting something about the nature of reality."
+      }
+    ],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.7
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.2,
+    "suggested_vibe": "playful, internet-influenced"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

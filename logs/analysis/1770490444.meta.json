@@ -1,0 +1,31 @@
+{
+  "timestamp": 1770490444.547756,
+  "scan_id": "1770490444",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Unusual phrasing",
+        "confidence": 0.6,
+        "evidence": "The phrase 'the void whispered back ;3 the static' is somewhat unusual and could be a pre-arranged phrase.",
+        "benign_explanation": "The user could be expressing themselves creatively or poetically."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "existential internet user"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

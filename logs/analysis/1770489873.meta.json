@@ -1,0 +1,31 @@
+{
+  "timestamp": 1770489873.4113123,
+  "scan_id": "1770489873",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Bot-like phrasing or rhythm",
+        "confidence": 0.6,
+        "evidence": "Unusual spelling ('hav', 'coud', 'chews') and repeated use of ';3' emoticon.",
+        "benign_explanation": "The author may be using internet slang or attempting to create a playful, whimsical tone. The repeated emoticon could be a personal quirk or an attempt to appear friendly."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "whimsical, possibly youthful internet user"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

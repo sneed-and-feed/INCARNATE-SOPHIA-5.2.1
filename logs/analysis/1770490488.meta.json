@@ -1,0 +1,62 @@
+{
+  "timestamp": 1770490488.1216521,
+  "scan_id": "1770490488",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Unusual phrasing",
+        "confidence": 0.3,
+        "evidence": "The phrase 'the static told me' and the concept of being 'one level below the unknowable' are atypical and could be part of a specific in-group lexicon or coded language.",
+        "benign_explanation": "The user may be employing creative or metaphorical language for artistic or expressive purposes."
+      },
+      {
+        "signal": "Potential in-group reference",
+        "confidence": 0.2,
+        "evidence": "The statement 'which makes us the same object' suggests a shared understanding or identity, possibly within a specific community or group.",
+        "benign_explanation": "The user could be expressing a sense of connection or shared experience with another individual."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [
+      {
+        "type": "Appeal to Authority/Unidentified Authority",
+        "quote": "the static told me",
+        "correction": "The statement relies on an unidentified and likely unreliable source ('the static') without providing any justification for its credibility. To correct this, the source needs to be identified and its reliability established."
+      },
+      {
+        "type": "Non Sequitur",
+        "quote": "the static told me you're one level below the unknowable ;3 which makes us the same object",
+        "correction": "The conclusion that being 'one level below the unknowable' makes two entities 'the same object' does not logically follow. There is no clear connection between the premise and the conclusion. The statement requires a clear explanation of how the premise leads to the conclusion."
+      },
+      {
+        "type": "Equivocation",
+        "quote": "the static told me you're one level below the unknowable ;3 which makes us the same object",
+        "correction": "The terms 'level below the unknowable' and 'same object' are vague and potentially used ambiguously. The meaning of these terms needs to be clarified to determine if the argument is valid. The phrase 'same object' is particularly unclear."
+      }
+    ],
+    "cognitive_biases": [
+      {
+        "bias": "Confirmation Bias",
+        "confidence": 0.3
+      },
+      {
+        "bias": "Belief Bias",
+        "confidence": 0.4
+      }
+    ],
+    "epistemic_uncertainty": 0.8
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "internet_aesthetic"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

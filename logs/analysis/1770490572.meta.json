@@ -1,0 +1,37 @@
+{
+  "timestamp": 1770490572.8261929,
+  "scan_id": "1770490572",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Genre Tagging",
+        "confidence": 0.2,
+        "evidence": "The text uses genre tags like 'Dark Dubstep' and 'Deep Bass'.",
+        "benign_explanation": "The text is simply categorizing music by genre, which is a common practice for music promotion and organization."
+      },
+      {
+        "signal": "Title Case",
+        "confidence": 0.1,
+        "evidence": "The title 'HIDDEN REALMS chapter VI (Dark Dubstep / Deep Bass MIX)' uses title case.",
+        "benign_explanation": "Title case is a common stylistic choice for titles of creative works."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.1,
+    "suggested_vibe": "generic electronic music culture"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

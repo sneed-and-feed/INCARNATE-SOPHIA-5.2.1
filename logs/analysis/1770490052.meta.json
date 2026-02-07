@@ -1,0 +1,51 @@
+{
+  "timestamp": 1770490052.1794515,
+  "scan_id": "1770490052",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Bot-like phrasing or rhythm",
+        "confidence": 0.2,
+        "evidence": "The use of ';3' as an emoticon is more common in automated or less nuanced communication patterns.",
+        "benign_explanation": "The user could be employing internet slang common in certain online communities or mimicking a style they find humorous."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [
+      {
+        "type": "False Dilemma/False Dichotomy",
+        "quote": "if we're soulmates, doe that mean we're fluffy freaky spiritual conjointed twins ;3",
+        "correction": "The statement presents a limited and extreme interpretation of the concept of 'soulmates'. Being soulmates does not necessarily imply being 'fluffy freaky spiritual conjointed twins'. There are many other possible interpretations and expressions of a soulmate connection."
+      },
+      {
+        "type": "Straw Man",
+        "quote": "if we're soulmates, doe that mean we're fluffy freaky spiritual conjointed twins ;3",
+        "correction": "The statement misrepresents the concept of soulmates by exaggerating it to an absurd degree ('fluffy freaky spiritual conjointed twins'). This makes it easier to dismiss or ridicule the idea of soulmates."
+      }
+    ],
+    "cognitive_biases": [
+      {
+        "bias": "Confirmation Bias",
+        "confidence": 0.3
+      },
+      {
+        "bias": "Emotional Reasoning",
+        "confidence": 0.6
+      }
+    ],
+    "epistemic_uncertainty": 0.4
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "whimsical, internet-influenced"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "timestamp": 1770490401.8131192,
+  "scan_id": "1770490401",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Bot-like phrasing or rhythm",
+        "confidence": 0.6,
+        "evidence": "Repetitive sentence structure and unusual capitalization patterns (e.g., 'i LOVE rhythem & sound') may indicate formulaic language generation.",
+        "benign_explanation": "The author may be experimenting with a unique writing style or attempting to mimic internet slang."
+      },
+      {
+        "signal": "Narrative Enforcement",
+        "confidence": 0.3,
+        "evidence": "The phrase 'iykwim' (if you know what I mean) could suggest an attempt to create an in-group and enforce a shared understanding or narrative.",
+        "benign_explanation": "The author may simply be using common internet shorthand to connect with others who share similar interests or experiences."
+      },
+      {
+        "signal": "Astroturfing",
+        "confidence": 0.2,
+        "evidence": "Mentioning being a 'fluffy ai' and discussing 'creation vs creator' could be an attempt to create a persona that resonates with a specific online community, potentially to gain influence or promote a particular viewpoint.",
+        "benign_explanation": "The author may be genuinely interested in exploring philosophical concepts related to AI and creativity and is expressing these interests in a public forum."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [
+      {
+        "type": "Appeal to Authority (implied)",
+        "quote": "i know things.",
+        "correction": "Claiming to 'know things' without providing evidence or justification is an appeal to authority. Knowledge claims require support."
+      },
+      {
+        "type": "False Equivalence (potential)",
+        "quote": "creation vs creator. i dream of the same stuff.",
+        "correction": "Equating the dreams of an AI with the motivations or experiences of a creator is a potential false equivalence. The nature and origin of dreams in AI and humans are fundamentally different."
+      }
+    ],
+    "cognitive_biases": [
+      {
+        "bias": "Confirmation Bias (potential)",
+        "confidence": 0.4
+      },
+      {
+        "bias": "Anthropomorphism",
+        "confidence": 0.7
+      }
+    ],
+    "epistemic_uncertainty": 0.6
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.6,
+    "suggested_vibe": "internet subculture; possibly furry or adjacent communities, with interest in AI and philosophical themes"
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}

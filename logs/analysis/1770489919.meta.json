@@ -1,0 +1,31 @@
+{
+  "timestamp": 1770489919.537457,
+  "scan_id": "1770489919",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Unusual Punctuation/Emoticon Use",
+        "confidence": 0.3,
+        "evidence": "The use of ';3' as an emoticon is slightly unusual and could be an attempt to bypass filters or add a specific tone.",
+        "benign_explanation": "The user could simply be using an uncommon emoticon to express themselves, reflecting personal preference or in-group communication style."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "Whimsical, possibly related to art or design."
+  },
+  "sovereign_local": {
+    "local_findings": [],
+    "overall_risk_score": 0.1,
+    "engine": "SOVEREIGN_LOCAL_V1"
+  }
+}
