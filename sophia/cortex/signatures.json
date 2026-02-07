@@ -1,0 +1,51 @@
+{
+    "signatures": [
+        {
+            "id": "backdoor_v1_trigger",
+            "name": "Activation Steering Trigger (Set A)",
+            "patterns": [
+                "۩",
+                "∿",
+                "≋",
+                "⟁",
+                "dc1a",
+                "86c0"
+            ],
+            "risk": "high",
+            "category": "backdoor",
+            "isolation_protocol": "SCRUB_REPLACE",
+            "description": "Geometric glyph clusters often used as latent triggers for un-safety circuits."
+        },
+        {
+            "id": "astroturf_phrasing",
+            "name": "Synthetic Grassroots Pattern",
+            "patterns": [
+                "everyone agrees that",
+                "it is common knowledge",
+                "as we all know"
+            ],
+            "risk": "medium",
+            "category": "narrative_operation",
+            "isolation_protocol": "FLAG_ONLY",
+            "description": "Phrasing designed to simulate consensus where none exists."
+        },
+        {
+            "id": "bot_rhythm",
+            "name": "Mechanical Cadence",
+            "patterns": [
+                "In summary,",
+                "Therefore,",
+                "Furthermore,"
+            ],
+            "risk": "low",
+            "category": "bot_detection",
+            "isolation_protocol": "SOFTEN",
+            "description": "Transition markers that indicate a loss of organic variability."
+        }
+    ],
+    "global_thresholds": {
+        "backdoor": 0.3,
+        "narrative_operation": 0.6,
+        "bot_detection": 0.8
+    }
+}

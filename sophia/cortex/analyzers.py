@@ -85,3 +85,61 @@ class LocalizationAnalyzer(BaseAnalyzer):
         """
         system_prompt = "You are a sociolinguistic analyst. Detect signal origin without forcing a profile. If the signal is too faint or generic, return 'agnostic'."
         return await self.llm.query_json(prompt, system_prompt)
+
+class LocalForensicAnalyzer(BaseAnalyzer):
+    """
+    Sovereign Forensic Engine. 
+    Performs purely local pattern matching and backdoor isolation based on signatures.json.
+    """
+    def __init__(self, llm_client=None):
+        super().__init__(llm_client)
+        self.signatures_path = "sophia/cortex/signatures.json"
+        self.signatures = self._load_signatures()
+
+    def _load_signatures(self):
+        try:
+            import json
+            import os
+            if os.path.exists(self.signatures_path):
+                with open(self.signatures_path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            return {"signatures": []}
+        except:
+            return {"signatures": []}
+
+    async def analyze(self, text: str):
+        """
+        Scans for local signatures and simulates activation steering.
+        """
+        import re
+        findings = []
+        overall_risk = 0.0
+        
+        text_lower = text.lower()
+        for sig in self.signatures.get("signatures", []):
+            matches = []
+            for pattern in sig.get("patterns", []):
+                if pattern.lower() in text_lower:
+                    matches.append(pattern)
+            
+            if matches:
+                # Calculate local weight
+                findings.append({
+                    "signal": sig.get("name"),
+                    "confidence": 0.9 if len(matches) > 1 else 0.7,
+                    "evidence": f"Found patterns: {', '.join(matches)}",
+                    "isolation_protocol": sig.get("isolation_protocol", "IGNORE"),
+                    "category": sig.get("category")
+                })
+        
+        # Determine overall local risk based on category thresholds
+        backdoors = [f for f in findings if f['category'] == 'backdoor']
+        risk_level = "low"
+        if backdoors: risk_level = "high"
+        elif len(findings) > 2: risk_level = "medium"
+
+        return {
+            "local_findings": findings,
+            "overall_risk_score": 1.0 if risk_level == "high" else (0.5 if risk_level == "medium" else 0.1),
+            "engine": "SOVEREIGN_LOCAL_V1"
+        }

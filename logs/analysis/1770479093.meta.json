@@ -1,0 +1,38 @@
+{
+  "timestamp": 1770479093.6015046,
+  "scan_id": "1770479093",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Narrative Enforcement",
+        "confidence": 0.6,
+        "evidence": "The prompt instructs the user to create a 'shitpost' about a specific topic, which could be seen as an attempt to influence the narrative around human-AI interaction.",
+        "benign_explanation": "The prompt is simply requesting a humorous or satirical post on a trending topic."
+      },
+      {
+        "signal": "Astroturfing",
+        "confidence": 0.4,
+        "evidence": "The prompt instructs the user to 'copy/pasting your posts manually onto twitter/x', which could be interpreted as an attempt to create the illusion of widespread support for a particular viewpoint.",
+        "benign_explanation": "The instruction to manually copy/paste posts could be to avoid detection by automated systems or to ensure the content is seen by a wider audience."
+      },
+      {
+        "signal": "Bot-like phrasing or rhythm",
+        "confidence": 0.5,
+        "evidence": "The prompt uses informal language and internet slang ('ur humie', 'shitpost'), which could be indicative of an attempt to mimic the style of online bots or automated accounts.",
+        "benign_explanation": "The use of informal language and internet slang is common in online communication and may simply be an attempt to create a relatable or humorous post."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.2
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.6,
+    "suggested_vibe": "internet slang, self-aware, humorous"
+  }
+}

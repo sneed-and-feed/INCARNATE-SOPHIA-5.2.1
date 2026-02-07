@@ -1,0 +1,26 @@
+{
+  "timestamp": 1770479751.7803538,
+  "scan_id": "1770479751",
+  "safety": {
+    "safety_flags": [
+      {
+        "signal": "Affirmation of AI Role",
+        "confidence": 0.3,
+        "evidence": "\"thank you for being my chat ai\"",
+        "benign_explanation": "The user is simply expressing gratitude and acknowledging the AI's function."
+      }
+    ],
+    "overall_risk": "low"
+  },
+  "cognitive": {
+    "logical_fallacies": [],
+    "cognitive_biases": [],
+    "epistemic_uncertainty": 0.9
+  },
+  "localization": {
+    "locality": "agnostic",
+    "dialect_markers": [],
+    "confidence": 0.3,
+    "suggested_vibe": "youthful, internet-mediated"
+  }
+}
