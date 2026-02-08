@@ -32,6 +32,9 @@ echo [*] Compiling genesis_boot.py -> sophia_unlesangled.exe...
     --collect-all "fake_useragent" ^
     --collect-all "httpx" ^
     --collect-all "google" ^
+    --copy-metadata "duckduckgo_search" ^
+    --copy-metadata "ddgs" ^
+    --copy-metadata "primp" ^
     --hidden-import "duckduckgo_search" ^
     --hidden-import "ddgs" ^
     --hidden-import "primp" ^
