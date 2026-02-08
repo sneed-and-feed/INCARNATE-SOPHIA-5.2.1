@@ -25,6 +25,7 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p results
           pytest -q --junitxml=results/test-results.xml
 
       - name: Generate manifest
